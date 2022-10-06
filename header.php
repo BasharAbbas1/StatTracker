@@ -9,7 +9,7 @@ try {
     // set the PDO error mode to exception
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   } catch(PDOException $e) {
-
+  
   }
   session_start();
 ?>
@@ -31,4 +31,4 @@ try {
   <title>Stat Tracker</title>
 </head>
 
-<body>
+<body class="bg-slate-300">
