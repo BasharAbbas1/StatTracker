@@ -24,7 +24,7 @@ try {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-  <link rel="stylesheet" href="dist/outputStyles.css">
+  <link rel="stylesheet" href="dist/output.css">
   <script src="assets/JS/script.js"> </script>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 

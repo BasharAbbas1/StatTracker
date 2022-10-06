@@ -1,4 +1,4 @@
-<footer>
+<footer class="bg-slate-400">
         <p>StatTracker</p>
         <p>© 2022 Bashar Abbas. All rights reserved</p>
 </footer>
