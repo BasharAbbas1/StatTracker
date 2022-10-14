@@ -1,17 +1,3 @@
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-    <link rel="stylesheet" href="dist/output.css">
-    <script src="assets/JS/script.js"> </script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-
-    <title>Stat Tracker</title>
-</head>
-
-
 <div class="min-h-full flex items-center justify-center py-60 px-4 sm:px-6 lg:px-8">
     <div class="bg-white p-4 border-4 border-double rounded-lg border-black">
         <h2 class="mt-6 text-center font-extrabold text-gray-900">Inloggen</h2>
@@ -42,12 +28,11 @@
             </div>
 
             <div>
-                <div class="g-recaptcha" data-sitekey="6Ldp7mAiAAAAAKktxz3-AkVYcdONh0HMb_quWMcF"></div>
-                <input name="submit" type="submit" value="INLOGGEN"
+                <div class="g-recaptcha" data-sitekey="6LccEWEiAAAAAOMHGh31cv__8SLJj5_aIyBUmnwp"></div>
+                <input name="submit" type="submit" value="REGISTREREN"
                     class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-full text-black bg-gray-300 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900">
                     <div class="space-x-8 underline underline-offset-2 text-black">
-                    <a href="index.php?page=register">registeren</a>
-                    <a href="index.php?page=resetten">wachtwoord vergeten</a>
+                    <a href="index.php?page=login">Inloggen</a>
                 </div>
             </div>
             
@@ -65,7 +50,7 @@ if(isset($_POST["submit"])){
 
     $recaptcha = $_POST['g-recaptcha-response'];
     
-    $secret_key = "6Ldp7mAiAAAAAOsl5R34PNln9pkEkW-htfydzL-4";
+    $secret_key = "6LccEWEiAAAAADl4wGgge-bwobVEkoOR1eEMsUVz";
   
     $url = 'https://www.google.com/recaptcha/api/siteverify?secret='
           . $secret_key . '&response=' . $recaptcha;
@@ -76,7 +61,7 @@ if(isset($_POST["submit"])){
     $response = json_decode($response);
     
     if ($response->success == true) {
-        echo '<script>alert("Google reCAPTACHA verified")</script>';
+
     try{
         $sql = "SELECT ID,email,password,naam FROM user WHERE email = ?";
         $stmt = $db->prepare($sql); $stmt->execute(array($email));
@@ -107,7 +92,7 @@ if(isset($_POST["submit"])){
         echo "<div id='meldingen'>".$error."</div>";
     } 
 } else {
-    echo '<script>alert("Error in Google reCAPTACHA")</script>';
+    
 }
 
 
