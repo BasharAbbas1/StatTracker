@@ -1,6 +1,6 @@
 <div class="min-h-full flex items-center justify-center py-60 px-4 sm:px-6 lg:px-8">
     <div class="bg-white p-4 border-4 border-double rounded-lg border-black">
-        <h2 class="mt-6 text-center font-extrabold text-gray-900">Inloggen</h2>
+        <h2 class="mt-6 text-center font-extrabold text-gray-900">Registreren</h2>
         <p class="mt-2 text-center text-sm text-gray-600">
         </p>
 
