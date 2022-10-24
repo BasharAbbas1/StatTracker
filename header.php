@@ -16,7 +16,7 @@ try {
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 
 <head>
   <meta charset="UTF-8">
@@ -30,3 +30,5 @@ try {
 </head>
 
 <body class="bg-slate-300">
+  
+

@@ -39,66 +39,22 @@
     </div>
 </div>
 
+<?php 
+ 
+ if(isset($_POST["submit"])){
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
+    $userArr = array("Name"=>$name, "Email"=>$email, "Password"=>$password);
 
-
-<?php
-if(isset($_POST["submit"])){
-    $error = " ";
-    $email = htmlspecialchars($_POST["email"]);
-    $password = htmlspecialchars($_POST["password"]);
-
-    $recaptcha = $_POST['g-recaptcha-response'];
+    $sql = "INSERT INTO `user` (`Name`, `Email`, `Password`) 
+            VALUES (:Name, :Email, :Password);";
     
-    $secret_key = "6LccEWEiAAAAADl4wGgge-bwobVEkoOR1eEMsUVz";
-  
-    $url = 'https://www.google.com/recaptcha/api/siteverify?secret='
-          . $secret_key . '&response=' . $recaptcha;
-
-           // Making request to verify captcha
-    $response = file_get_contents($url);
-
-    $response = json_decode($response);
-    
-    if ($response->success == true) {
-
-    try{
-        $sql = "SELECT ID,email,password,naam FROM user WHERE email = ?";
-        $stmt = $db->prepare($sql); $stmt->execute(array($email));
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        if($result){
-            $hash = $result["password"];
-            if(password_verify($password, $hash)){
-                $MySession = session_id();
-                $_SESSION["ID"] = $MySession;
-                $_SESSION["USERID"] = $result["ID"];
-                $_SESSION["USER"] = $result["Naam"];
-                $_SESSION["EMAIL"] = $result["Email"];
-                $_SESSION["STATUS"] = 1;
-                $_SESSION["ADMIN"] = 0;
-                echo "
-                <script>location.href='index.php?page=dashboard';</script>";
-            } else {
-                $error .= "Inloggegevens ongeldig.<br>";
-            }
-            } else {
-                $error .= "Inloggegevens ongeldig.<br>";
-            }
-        } catch (PDOException $e){
-            echo $e->getMessage();
-        }
-
-
-        echo "<div id='meldingen'>".$error."</div>";
-    } 
-} else {
-    
+    $stmt = $db->prepare($sql);
+    $stmt->execute($userArr);
+    header("Location:index.php?page=landingspage");
 }
+?>
 
-
-    if(isset($_SESSION["STATUS"]) && !empty($_SESSION["STATUS"])){
-
-    echo "<script>location.href='index.php?page=dashboard';</script>"; 
-    }
-  ?>
 </body>

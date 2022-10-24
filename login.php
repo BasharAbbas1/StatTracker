@@ -43,7 +43,7 @@ if(isset($_POST["submit"])){
     $password = htmlspecialchars($_POST["password"]);
 
     try{
-        $sql = "SELECT ID,email,password,naam FROM user WHERE email = ?";
+        $sql = "SELECT ID,email,password,name FROM user WHERE email = ?";
         $stmt = $db->prepare($sql); $stmt->execute(array($email));
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         if($result){
@@ -52,12 +52,12 @@ if(isset($_POST["submit"])){
                 $MySession = session_id();
                 $_SESSION["ID"] = $MySession;
                 $_SESSION["USERID"] = $result["ID"];
-                $_SESSION["USER"] = $result["Naam"];
-                $_SESSION["EMAIL"] = $result["Email"];
+                $_SESSION["USER"] = $result["name"];
+                $_SESSION["EMAIL"] = $result["email"];
                 $_SESSION["STATUS"] = 1;
                 $_SESSION["ADMIN"] = 0;
                 echo "
-                <script>location.href='index.php?page=dashboard';</script>";
+                <script>location.href='index.php?page=landingspage';</script>";
             } else {
                 $error .= "Inloggegevens ongeldig.<br>";
             }
