@@ -74,7 +74,7 @@ if(isset($_POST["submit"])){
 
     if(isset($_SESSION["STATUS"]) && !empty($_SESSION["STATUS"])){
 
-    echo "<script>location.href='index.php?page=dashboard';</script>"; 
+    echo "<script>location.href='index.php?page=landingspage';</script>"; 
     }
   ?>
 </body>
