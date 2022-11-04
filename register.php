@@ -53,7 +53,7 @@
     
     $stmt = $db->prepare($sql);
     $stmt->execute($userArr);
-    header("Location:index.php?page=landingspage");
+    header("Location:index.php?page=login");
 }
 ?>
 
